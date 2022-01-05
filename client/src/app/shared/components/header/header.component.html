@@ -1,0 +1,67 @@
+<div class="navigation-bar">
+  <div class="mobile-menu">
+
+    <div class="dropdown">
+      <div class="dropbtn">
+        <button class="main-menu">
+          <div class="menu-line"
+               id="menu-line-top"></div>
+          <div class="menu-line"
+               id="menu-line-middle"></div>
+          <div class="menu-line"
+               id="menu-line-bottom"></div>
+        </button>
+      </div>
+
+      <div class="dropdown-content">
+        <ng-container *ngIf="(accountService.currentUser | async) as user">
+          <a class="userName">Hi! {{user.userName}}</a>
+          <div>
+            <a style="cursor: pointer;"
+               (click)="logout()"> Logout</a>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!(accountService.currentUser | async)">
+          <div>
+            <a routerLink="account/login"> Login </a>
+          </div>
+          <div>
+            <a routerLink="account/register">Trainer Registration</a>
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="logo-container">
+    <img src="../../assets/img/Logo.png">
+  </div>
+
+
+  <div class="header-user-buttons-section">
+    <ng-container *ngIf="!(accountService.currentUser | async)">
+
+      <button routerLink="account/register">
+        Trainer Registration
+      </button>
+
+
+      <button routerLink="account/login">
+        Login
+      </button>
+
+    </ng-container>
+
+    <ng-container *ngIf="(accountService.currentUser | async) as user">
+      <div class="userName">Hi {{user.userName}}!</div>
+
+      <button (click)="logout()">
+        Logout
+      </button>
+
+    </ng-container>
+
+  </div>
+</div>
