@@ -9,6 +9,7 @@ namespace API.AutoMapperConfig
         public AutoMapperProfiles()
         {
             CreateMap<TrainerCredentialsDto, AppUser>();
+            CreateMap<Hero, HeroDto>();
         }
     }
 }

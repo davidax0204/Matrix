@@ -16,6 +16,7 @@ namespace API.Configurations
             services.AddControllers();
 
             services.AddScoped<ITrainerRepository, TrainerRepository>();
+            services.AddScoped<IHeroRepository, HeroRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
@@ -24,7 +25,8 @@ namespace API.Configurations
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddCors(options => {
+            services.AddCors(options =>
+            {
                 options.AddDefaultPolicy(builder =>
                 {
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
