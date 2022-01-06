@@ -96,8 +96,8 @@ export class RegisterComponent implements OnInit {
   }
 
   passwordValidator(control: AbstractControl): ValidationErrors | null {
-    const isIncludesWhiteSpace = control.value.includes(' ');
-    const isIncludesDigits =
+    const isIncludesWhiteSpace: boolean = control.value.includes(' ');
+    const isIncludesDigits: boolean =
       /^(?=.*\d)(?=.*[a-z])(?=.*\W)(?=.*[A-Z]).{8,}$/.test(control.value);
     const invalid = !isIncludesDigits || isIncludesWhiteSpace;
     return invalid ? { passwordinvalid: true } : null;
@@ -111,6 +111,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmitSignUpForm() {
     this.accountService.register(this.signUpForm.value).subscribe(() => {
+      this.router.navigateByUrl('/heroes/all');
       this.toaster.success(
         `${this.userName.value} was successfully registered`
       );

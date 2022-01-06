@@ -1,0 +1,40 @@
+<div class="hero-card">
+
+  <div class="hero-card-profile-level">
+    <label><b>Name: </b></label>
+    <div>{{hero.name | titlecase}}</div>
+  </div>
+
+  <div class="hero-card-profile-level">
+    <label><b>Ability</b></label>
+    <div>{{hero.ability | titlecase}}</div>
+  </div>
+
+  <div class="hero-card-profile-level">
+    <label><b>Current Power </b></label>
+    <div>{{hero.currentPower | number : '1.2-2'}}</div>
+  </div>
+
+  <div class="hero-card-profile-level">
+    <label><b>Starting Power </b></label>
+    <div>{{hero.startingPower | number : '1.2-2'}}</div>
+  </div>
+
+  <div class="hero-card-profile-level">
+    <label><b>Training Since: </b></label>
+    <div>{{hero.created| date: 'dd/MM/yyyy'}}</div>
+  </div>
+
+  <div class="hero-card-profile-level">
+    <label><b>Suit colors: </b></label>
+    <div class="color"
+         *ngFor="let color of colors; let i=index">{{color}}{{i==colors.length-1?'':', '}}</div>
+  </div>
+
+  <div class="hero-card-button-section"
+       *ngIf="(accountService.currentUser | async) as user">
+    <button *ngIf="hero.appUserId==user.id"
+            [disabled]="hero.trainingForToday==5"
+            (click)="trainHero(hero)">Train - {{5 - hero.trainingForToday}} Left Today </button>
+  </div>
+</div>

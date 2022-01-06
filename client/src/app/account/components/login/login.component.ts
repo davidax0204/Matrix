@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   password;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private accountService: AccountService,
     private toastr: ToastrService
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   formInit() {
-    this.signInForm = this.fb.group({
+    this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, this.passwordValidator]],
     });
@@ -60,8 +60,8 @@ export class LoginComponent implements OnInit {
   }
 
   passwordValidator(control: AbstractControl): ValidationErrors | null {
-    const isIncludesWhiteSpace = control.value.includes(' ');
-    const isIncludesDigits =
+    const isIncludesWhiteSpace: boolean = control.value.includes(' ');
+    const isIncludesDigits: boolean =
       /^(?=.*\d)(?=.*[a-z])(?=.*\W)(?=.*[A-Z]).{8,}$/.test(control.value);
     const invalid = !isIncludesDigits || isIncludesWhiteSpace;
     return invalid ? { passwordinvalid: true } : null;
@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
 
   onSubmitSignInForm() {
     this.accountService.login(this.signInForm.value).subscribe(() => {
+      this.router.navigateByUrl('/heroes/my');
       this.toastr.success('You were successfully logged in');
     });
   }

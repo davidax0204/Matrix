@@ -1,0 +1,33 @@
+form {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="number"] {
+  width: 70px;
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  background: #f1f1f1;
+}
+select {
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  background: #f1f1f1;
+}
+b {
+  margin: 0 5px;
+}
+button {
+  background-color: #2196f3;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  margin-left: 5px;
+}

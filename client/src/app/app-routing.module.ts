@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/errors/not-found/not-found.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
@@ -9,6 +10,12 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () =>
       import('./account/account.module').then((module) => module.AccountModule),
+  },
+  {
+    path: 'heroes',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./heroes/heroes.module').then((module) => module.HeroesModule),
   },
   { path: '**', component: NotFoundComponent },
 ];

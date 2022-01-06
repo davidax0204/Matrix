@@ -1,0 +1,50 @@
+<form #form="ngForm"
+      (ngSubmit)="setFilters()">
+
+  <div>
+    <label><b>Power From:</b> </label>
+    <input type="number"
+           name="minCurrentPower"
+           [(ngModel)]="heroParams.minCurrentPower">
+  </div>
+
+  <div>
+    <label><b>Power To:</b></label>
+    <input type="number"
+           name="maxCurrentPower"
+           [(ngModel)]="heroParams.maxCurrentPower">
+  </div>
+
+  <div>
+    <label><b>Ability:</b></label>
+    <select name="ability"
+            [(ngModel)]="heroParams.ability">
+      <option *ngFor="let ability of abilityList"
+              [value]="ability.value">{{ability.description}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label><b>Sort By:</b></label>
+    <select name="orderBy"
+            [(ngModel)]="heroParams.orderBy">
+      <option *ngFor="let sortOption of sortByList"
+              [value]="sortOption.value">{{sortOption.description}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label><b>Heroes Per Page:</b></label>
+    <select name="pageSize"
+            [(ngModel)]="heroParams.pageSize">
+      <option *ngFor="let heroesPerPage of heroesPerPageList"
+              [value]="heroesPerPage.value">{{heroesPerPage.description}}</option>
+    </select>
+  </div>
+
+  <div>
+    <button>Apply Filters</button>
+    <button (click)="resetFilters()"
+            type="button">Reset Filters</button>
+  </div>
+</form>

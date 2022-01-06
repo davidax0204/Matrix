@@ -1,0 +1,8 @@
+<app-filter-sort [isMyHeroes]="isMyHeroes"
+                 (loadHeroes)="loadHeroes()"></app-filter-sort>
+
+<app-hero-list [heroes]="heroes"
+               (loadHeroes)="loadHeroes()"></app-hero-list>
+
+<app-pagination [pagination]="pagination"
+                (loadHeroes)="loadHeroes()"></app-pagination>

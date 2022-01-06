@@ -1,0 +1,15 @@
+.pagination {
+  margin-top: 30px;
+}
+.pagination a {
+  color: black;
+  padding: 8px;
+}
+.pagination a:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+.pageNumber:hover {
+  background-color: inherit;
+  cursor: inherit;
+}

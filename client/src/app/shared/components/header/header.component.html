@@ -17,6 +17,15 @@
         <ng-container *ngIf="(accountService.currentUser | async) as user">
           <a class="userName">Hi! {{user.userName}}</a>
           <div>
+            <a routerLink="/heroes/new">New Hero</a>
+          </div>
+          <div>
+            <a routerLink="/heroes/all">All Heroes</a>
+          </div>
+          <div>
+            <a routerLink="/heroes/my">My Heroes</a>
+          </div>
+          <div>
             <a style="cursor: pointer;"
                (click)="logout()"> Logout</a>
           </div>
@@ -46,8 +55,6 @@
       <button routerLink="account/register">
         Trainer Registration
       </button>
-
-
       <button routerLink="account/login">
         Login
       </button>
@@ -56,7 +63,17 @@
 
     <ng-container *ngIf="(accountService.currentUser | async) as user">
       <div class="userName">Hi {{user.userName}}!</div>
+      <button routerLink="/heroes/my">
+        My Heroes
+      </button>
 
+      <button routerLink="/heroes/all">
+        All Heroes
+      </button>
+
+      <button routerLink="/heroes/new">
+        New Hero
+      </button>
       <button (click)="logout()">
         Logout
       </button>

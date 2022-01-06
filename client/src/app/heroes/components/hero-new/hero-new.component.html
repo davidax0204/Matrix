@@ -1,0 +1,61 @@
+<form [formGroup]="heroCreateForm"
+      (ngSubmit)="createHero()">
+  <h1>Hero Creation</h1>
+
+  <p>Please fill this form to create a new hero.</p>
+
+  <hr>
+
+  <div class="input-container">
+    <label><b>Name</b></label>
+    <input type="text"
+           placeholder="Enter hero's name"
+           formControlName="name">
+
+    <div class="invalid-input-message"
+         *ngIf="name.touched && name.invalid">{{invalidNameMessage()}}</div>
+  </div>
+
+  <div class="input-container-suitColors">
+    <label><b>Suit colors: </b></label>
+
+    <ng-container *ngFor="let color of colors; let i=index">
+      <div class="radio-contatiner">
+        <input type="checkbox"
+               [value]="color.value"
+               (change)="onCheckChange($event)"
+               [checked]="color.checked">
+        {{color.description}}
+      </div>
+    </ng-container>
+
+    <div class="invalid-input-message"
+         *ngIf="isColorsCheckBoxesTouched &&
+                heroCreateForm.controls['suitColors'].invalid">
+      {{invalidSuitColorsMessage()}}</div>
+  </div>
+
+
+
+  <div class="input-container-abilty">
+    <label><b>Abiltiy: </b></label>
+
+    <input type="radio"
+           value="attacker"
+           name="ability"
+           formControlName="ability"> Attacker (100+ Power)
+
+    <input type="radio"
+           value="defender"
+           name="ability"
+           formControlName="ability"> Defender (50+ Power)
+
+    <div class="invalid-input-message"
+         *ngIf="ability.touched && ability.invalid">{{invalidAbilityMessage()}}</div>
+  </div>
+
+  <hr>
+
+  <button [disabled]="heroCreateForm.invalid">Create Hero</button>
+
+</form>

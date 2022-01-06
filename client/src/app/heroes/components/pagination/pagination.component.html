@@ -1,0 +1,8 @@
+<div *ngIf="pagination && pagination.totalItems>5"
+     class="pagination">
+  <a (click)="previousPage()">&laquo;</a>
+  <a class="pageNumber">{{pagination.currentPage}} / {{pagination.totalPages}}</a>
+  <a (click)="nextPage()">
+    &raquo;
+  </a>
+</div>
