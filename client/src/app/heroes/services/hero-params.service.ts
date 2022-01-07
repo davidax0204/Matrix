@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Hero } from '../models/hero';
 import { HeroPagination } from '../models/heroPagination';
 import { HeroParams } from '../models/heroParams';

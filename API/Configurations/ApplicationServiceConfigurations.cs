@@ -1,8 +1,9 @@
 using API.AutoMapperConfig;
 using API.Data;
 using API.Interfaces;
+using API.Middlewares;
 using API.Repositories;
-using API.services;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ namespace API.Configurations
             services.AddScoped<ITrainerRepository, TrainerRepository>();
             services.AddScoped<IHeroRepository, HeroRepository>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddSingleton<ILoggerService, LoggerService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
             services.AddDbContext<DataContext>(options =>
@@ -32,6 +34,8 @@ namespace API.Configurations
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
+
+            services.AddTransient<ExceptionHandlingMiddleware>();
 
             return services;
         }

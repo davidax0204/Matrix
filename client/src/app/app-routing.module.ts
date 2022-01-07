@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/errors/not-found/not-found.component';
+import { ServerErrorComponent } from './shared/components/errors/server-error/server-error.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./heroes/heroes.module').then((module) => module.HeroesModule),
   },
+  { path: 'server-error', component: ServerErrorComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

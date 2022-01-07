@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/account/account.service';
 import { User } from 'src/app/account/models/user';
-import { take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -23,6 +23,7 @@ export class JwtInterceptor implements HttpInterceptor {
     this.accountService.currentUser
       .pipe(take(1))
       .subscribe((user) => (currentUser = user));
+
     if (currentUser) {
       request = request.clone({
         setHeaders: {

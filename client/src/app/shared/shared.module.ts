@@ -9,9 +9,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServerErrorComponent } from './components/errors/server-error/server-error.component';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomeComponent, NotFoundComponent],
+  declarations: [
+    HeaderComponent,
+    WelcomeComponent,
+    NotFoundComponent,
+    ServerErrorComponent,
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,
