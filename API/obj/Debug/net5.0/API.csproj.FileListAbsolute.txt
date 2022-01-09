@@ -65,7 +65,8 @@ C:\Matrix\api\obj\Debug\net5.0\API.pdb
 C:\Matrix\api\obj\Debug\net5.0\API.genruntimeconfig.cache
 C:\Matrix\api\bin\Debug\net5.0\AutoMapper.dll
 C:\Matrix\api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Matrix\API\obj\Debug\net5.0\API.csproj.AssemblyReference.cache
 C:\Matrix\API\bin\Debug\net5.0\NLog.Config
 C:\Matrix\API\bin\Debug\net5.0\NLog.dll
 C:\Matrix\API\bin\Debug\net5.0\NLog.Extensions.Logging.dll
+C:\Matrix\API\obj\Debug\net5.0\API.csproj.AssemblyReference.cache
+C:\Matrix\API\bin\Debug\net5.0\Data\Seed\UserSeedData.json

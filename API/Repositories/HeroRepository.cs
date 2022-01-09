@@ -26,8 +26,6 @@ namespace API.Repositories
 
             Hero.PowerReset(heroes);
 
-            await saveAllAsync();
-
             var heroesDto = _mapper.Map<List<Hero>, List<HeroDto>>(heroes);
 
             return new HeroResult(true, null, heroesDto);
@@ -49,7 +47,7 @@ namespace API.Repositories
                 return new HeroResult(false, error);
             }
 
-            var hero = Hero.HeroInit(registerHeroDto, trainer);
+            var hero = Hero.HeroInit(registerHeroDto, trainer.Id);
 
             trainer.Heroes.Add(hero);
 
@@ -114,7 +112,7 @@ namespace API.Repositories
         private async Task<bool> isHeroExists(string heroName)
         {
             return await _context.Heroes
-                        .AnyAsync(x => x.Name.ToLower() == heroName.ToLower());
+                        .AnyAsync(x => x.Name == heroName);
         }
 
         private async Task<Hero> doesHeroBelongsToTrainer(AppUser trainer, int heroId)

@@ -29,16 +29,16 @@ namespace API.Models
         [Required]
         public string AppUserId { get; set; }
 
-        public static Hero HeroInit(NewHeroDto registerHeroDto, AppUser user)
+        public static Hero HeroInit(NewHeroDto registerHeroDto, string userId)
         {
             return new Hero
             {
-                Name = registerHeroDto.Name,
+                Name = registerHeroDto.Name.ToLower(),
                 Ability = registerHeroDto.Ability,
                 SuitColors = registerHeroDto.SuitColors,
                 StartingPower = registerHeroDto.Ability == "attacker" ? 100 : 50,
                 CurrentPower = registerHeroDto.Ability == "attacker" ? 100 : 50,
-                AppUserId = user.Id,
+                AppUserId = userId,
             };
         }
 
@@ -59,8 +59,7 @@ namespace API.Models
             {
                 TrainingForToday = 0;
             }
-
-            if (LastPowerUp.Day == DateTime.Now.Day && TrainingForToday >= 5)
+            else if (LastPowerUp.Day == DateTime.Now.Day && TrainingForToday >= 5)
             {
                 return false;
             }

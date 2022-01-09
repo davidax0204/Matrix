@@ -5,7 +5,6 @@ namespace API.DTOs
 {
     public class TrainerDto
     {
-
         [Required]
         public string Id { get; set; }
 
