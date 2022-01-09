@@ -23,7 +23,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paginatedResultSub = this.HeroesService.getHeroes().subscribe(
-      (paginatedResult) => {
+      (paginatedResult: PaginatedResult) => {
         this.pagination = paginatedResult.pagination;
         this.heroes = paginatedResult.heroes;
       }
@@ -35,7 +35,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
   }
 
   loadHeroes() {
-    let paginatedResult: PaginatedResult<Hero[]> =
+    let paginatedResult: PaginatedResult =
       this.HeroesService.getPaginatedFilteredSortedHeroes();
 
     this.heroes = paginatedResult.heroes;

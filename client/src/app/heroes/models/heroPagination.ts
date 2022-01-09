@@ -1,3 +1,5 @@
+import { Hero } from "./hero";
+
 export class HeroPagination {
   currentPage: number;
   itemsPerPage: number;
@@ -17,7 +19,7 @@ export class HeroPagination {
   }
 }
 
-export class PaginatedResult<Hero> {
-  heroes: Hero;
+export class PaginatedResult {
+  heroes: Hero[];
   pagination: HeroPagination;
 }

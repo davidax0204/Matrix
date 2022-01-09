@@ -41,9 +41,7 @@ export class HeroesService {
 
   getPaginatedFilteredSortedHeroes() {
     let heroResult: Hero[] = this.heroes;
-    let paginatedResult: PaginatedResult<Hero[]> = new PaginatedResult<
-      Hero[]
-    >();
+    let paginatedResult: PaginatedResult = new PaginatedResult();
 
     heroResult = this.heroParamsService.filterHeroes(heroResult);
 

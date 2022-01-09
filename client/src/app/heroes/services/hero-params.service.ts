@@ -26,13 +26,6 @@ export class HeroParamsService {
     this.heroParams = params;
   }
 
-  autoSetParams() {
-    const pagination = JSON.parse(sessionStorage.getItem('pagination'));
-    if (pagination) {
-      this.setHeroParams(pagination);
-    }
-  }
-
   resetHeroParams() {
     sessionStorage.removeItem('pagination');
     return (this.heroParams = new HeroParams());

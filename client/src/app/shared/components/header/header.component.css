@@ -5,6 +5,7 @@
   height: 76px;
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 .logo-container {
   background-color: white;
